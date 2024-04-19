@@ -1,12 +1,14 @@
 import os
 from PIL import Image
 import io
-from flask import Flask,Blueprint,request,render_template,jsonify,Response,send_file
+from flask import Flask,Blueprint,request,render_template,jsonify,Response
 import jsonpickle
 import numpy as np
 import json
 import base64
 import generate_caption as gc
+import flask
+from pathlib import Path
 
 app = Flask(__name__)
 static_dir='images/'
@@ -32,7 +34,7 @@ def apiHome():
 
 @app.route('/result')
 def sendImage():
-    return send_file(static_dir+'sample.jpg',mimetype='image/gif')
+    return flask.send_from_directory((p := Path(static_dir+'sample.jpg')).parent, p.name, mimetype='image/gif')
 
 if __name__ == '__main__':
     app.run(debug=True,host='192.168.43.232',port=5000)
