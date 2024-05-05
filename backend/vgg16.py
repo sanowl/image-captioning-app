@@ -6,9 +6,6 @@
     https://arxiv.org/abs/1409.1556) (ICLR 2015)
 
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 import os
 
