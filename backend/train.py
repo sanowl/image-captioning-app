@@ -1,5 +1,4 @@
 from numpy import array
-from pickle import load
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
@@ -12,6 +11,7 @@ from keras.layers import Embedding
 from keras.layers import Dropout
 from keras.layers.merge import add
 from keras.callbacks import ModelCheckpoint
+import fickling
 
 
 def load_doc(filename):
@@ -44,7 +44,7 @@ def load_clean_descriptions(filename, dataset):
 	return descriptions
 
 def load_photo_features(filename, dataset):
-	all_features = load(open(filename, 'rb'))
+	all_features = fickling.load(open(filename, 'rb'))
 	features = {k: all_features[k] for k in dataset}
 	return features
 
