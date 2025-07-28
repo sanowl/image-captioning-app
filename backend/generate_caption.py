@@ -1,4 +1,3 @@
-from pickle import load
 from numpy import argmax
 import argparse
 import os
@@ -10,6 +9,7 @@ from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 from keras.models import Model
 from keras.models import load_model
+import fickling
  
 def extract_features(filename):
 	model = VGG16()
@@ -45,7 +45,7 @@ def generate_desc(model, tokenizer, photo, max_length):
 	return in_text
 
 def generate_captions(photo_path):
-        tokenizer = load(open('tokenizer.pkl', 'rb'))
+        tokenizer = fickling.load(open('tokenizer.pkl', 'rb'))
         max_length = 34
         model = load_model('model.h5')
         photo = extract_features(photo_path)
